@@ -1,0 +1,7 @@
+flask
+flask-cors
+google-cloud-storage
+pickle-mixin
+numpy
+pandas
+gunicorn
