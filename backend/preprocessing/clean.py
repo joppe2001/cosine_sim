@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MultiLabelBinarizer # type: ignore
+import os
 
 def load_data(filename, na_values=None):
     if na_values is None:
@@ -34,7 +35,10 @@ def preprocess_data(df, feature_columns, column_weights=None):
         
         feature_matrices.append(encoded_data)
         mlbs[col] = mlb
+    
 
     features_matrix = np.hstack(feature_matrices)
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    df.to_csv(os.path.join(base_path, '../cleaned_datasets/clean_set.csv'), index=False)
 
     return df, features_matrix, mlbs
