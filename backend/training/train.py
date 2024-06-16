@@ -52,7 +52,9 @@ if __name__ == "__main__":
         "themes",
         "studios",
         "allRank",
+        "rating",
+        "favorites"
     ]  # Change these columns as needed
-    column_weights = {"themes": 2.0}  # Adjust weights as needed
+    column_weights = {"themes": 1.5, "genres": 1.5, "allRank": 1.2, "favorites": 1.2}  # Adjust weights as needed
 
     main(filename, feature_columns, column_weights)

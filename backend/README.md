@@ -30,11 +30,19 @@ Once the dependencies are installed, start the training process by executing the
 python -m training.train
 ```
 
+before starting the server make sure that ssl certs are installed either using brew ( macos ) or https://github.com/FiloSottile/mkcert ( windows )
+```bash
+mkcert localhost # macos
+mkcert -install # windows
+```
+
 After the training is complete, start the server by running the following command:
 
 ```bash
 python -m server.app
 ```
+
+Then navigate to the /recommend route from the backend server.
 
 Make sure to change the model version in `app.py` if you haven't already. Locate the following lines of code for data loading:
 

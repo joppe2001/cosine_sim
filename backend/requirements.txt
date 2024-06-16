@@ -4,3 +4,6 @@ pickle-mixin
 numpy
 pandas
 gunicorn
+matplotlib
+dash
+seaborn

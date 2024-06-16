@@ -3,7 +3,7 @@
 .data
 .nuxt
 .nitro
-.cache
+.cache 
 dist
 
 # Node dependencies
@@ -26,3 +26,4 @@ logs
 anime_recommender
 
 models/
+cleaned_datasets/

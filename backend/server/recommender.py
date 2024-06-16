@@ -24,9 +24,9 @@ def _get_recommendations(df, cosine_sim, indices, N):
     max_score = df["score"].max()
     normalized_scores = df["score"].fillna(0) / max_score
     combined_scores = avg_sim_scores + normalized_scores
-    top_indices = combined_scores.argsort()[-N * 2 - 1 : -1][::-1]  # Fetch twice the needed recommendations
+    top_indices = combined_scores.argsort()[-N * 2 - 1 : -1][::-1]
     recommended = df.iloc[top_indices][[
-        "engName", "score", "url", "genres", "themes", "producer", "studios", "allRank"
+        "engName", "score", "url", "genres", "themes", "producer", "studios", "allRank", "rating", "favorites"
     ]]
     recommended["similarity_percentage"] = (avg_sim_scores[top_indices] * 100).tolist()
 

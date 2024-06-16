@@ -21,9 +21,11 @@ def register_routes(app, df, cosine_sim):
                 "producer": producer,
                 "studios": studios,
                 "allRank": allRank,
-                "similarity_percentage": similarity_percentage,
+                "rating": rating,
+                "favorites": favorites,
+                "similarity_percentage": similarity_percentage
             }
-            for name, score, url, genres, themes, producer, studios, allRank, similarity_percentage in recommendations.values
+            for name, score, url, genres, themes, producer, studios, allRank, rating, favorites, similarity_percentage in recommendations.values
         ]
         return jsonify(result)
 
