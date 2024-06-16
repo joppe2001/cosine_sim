@@ -5,8 +5,8 @@ from server.routes import register_routes # type: ignore
 app = create_app()
 
 # Data loading
-df = load_from_local("models/model1/dataframe.pkl")
-cosine_sim = load_from_local("models/model1/cosine_similarity_matrix.pkl")
+df = load_from_local("models/model3/dataframe.pkl")
+cosine_sim = load_from_local("models/model3/cosine_similarity_matrix.pkl")
 
 register_routes(app, df, cosine_sim)
 
