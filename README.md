@@ -55,7 +55,19 @@ Now, navigate to the `frontend` directory by executing the following command:
 ```bash
 cd ../frontend
 ```
+
+Run the installer for the packages ( choose one )
+```bash
+bun install
+yarn
+npm install
+pnpm install
+```
+
 Finally, start the development server using your preferred package manager. For example, if you are using `bun`, run the following command:
 ```bash
 bun dev
+yarn dev
+npm run dev
+pnpm run dev
 ```
