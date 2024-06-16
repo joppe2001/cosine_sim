@@ -8,57 +8,30 @@
         class="anime-card"
       >
         <h3 class="anime-title">
-          <a :href="anime.url">{{
-            anime?.name ? anime.name : "Name not available"
-          }}</a>
+          <a :href="anime.url">{{ anime?.name ? anime.name : "Name not available" }}</a>
         </h3>
-		<div class="match" v-if="anime.similarity_percentage < 60" style="color: red; margin-bottom: 10px;">
-		  bad match
-		</div>
-		<div class="match" v-if="anime.similarity_percentage >= 60" style="color: green; margin-bottom: 10px;">
-		  good match
-		</div>
+        <div class="match" :class="{ 'bad-match': anime.similarity_percentage < 60, 'good-match': anime.similarity_percentage >= 60 }">
+          {{ anime.similarity_percentage < 60 ? 'Bad match' : 'Good match' }}
+        </div>
         <div class="similarity-score-container">
-          <progress
-            class="similarity-meter"
-            :value="anime.similarity_percentage"
-            max="100"
-          ></progress>
-          <div class="percentage-label">
-            {{ anime.similarity_percentage.toFixed(2) }}% similar to your input
-          </div>
+          <progress class="similarity-meter" :value="anime.similarity_percentage" max="100"></progress>
+          <div class="percentage-label">{{ anime.similarity_percentage.toFixed(2) }}% similar to your input</div>
         </div>
         <p><strong>Score:</strong> {{ anime.score }}</p>
-
         <div v-if="anime.genres" class="tags">
-          <span class="tag" v-for="genre in anime.genres" :key="genre">{{
-            genre
-          }}</span>
+          <span class="tag" v-for="genre in anime.genres" :key="genre">{{ genre }}</span>
         </div>
-
         <p v-if="anime.aired"><strong>Aired:</strong> {{ anime.aired }}</p>
-        <p v-if="anime.producer">
-          <strong>Producer:</strong> {{ anime.producer }}
-        </p>
-        <p v-if="anime.studios">
-          <strong>Studios:</strong> {{ anime.studios.join(", ") }}
-        </p>
-        <!-- all rank -->
+        <p v-if="anime.producer"><strong>Producer:</strong> {{ anime.producer }}</p>
+        <p v-if="anime.studios"><strong>Studios:</strong> {{ anime.studios.join(", ") }}</p>
         <div class="tags">
-          <!-- display allRank's first number in the array -->
-          <p>
-            <strong>Rank: </strong
-            ><span v-for="rank in anime.allRank[0]" :key="rank">
-              {{ rank }}</span
-            >
-          </p>
+          <p><strong>Rank:</strong> <span v-for="rank in anime.allRank[0]" :key="rank">{{ rank }}</span></p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<!-- consentual -->
 <script setup>
 const props = defineProps(["recommendedAnime"]);
 
@@ -72,11 +45,16 @@ const sortedAnime = computed(() => {
 <style scoped lang="scss">
 .recommendation-container {
   font-family: "Arial", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 
   h2 {
     text-align: center;
-    color: #2c3e50;
+    color: #34495e;
     margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
   }
 
   .anime-list {
@@ -86,32 +64,48 @@ const sortedAnime = computed(() => {
   }
 
   .anime-card {
-    background: #f7f7f7;
+    background: #ffffff;
     border: 1px solid #e7e7e7;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 15px;
-    width: 100%; // Default to single column for mobile
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 100%; 
+    // box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-sizing: border-box;
 
     &:hover {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transform: translateY(-4px) translateX(4px);
+      box-shadow: -8px 8px 0 rgb(16,22,47);
     }
 
     .anime-title {
       margin-top: 0;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
 
       a {
         text-decoration: none;
-        color: #3498db;
+        color: #2980b9;
+        font-size: 1.5rem;
         transition: color 0.3s ease;
 
         &:hover {
-          color: #2980b9;
+          color: #1a5276;
         }
+      }
+    }
+
+    .match {
+      margin-bottom: 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+
+      &.bad-match {
+        color: #e74c3c;
+      }
+
+      &.good-match {
+        color: #27ae60;
       }
     }
 
@@ -119,9 +113,11 @@ const sortedAnime = computed(() => {
       margin-bottom: 10px;
       color: #34495e;
     }
+
     strong {
       color: #2c3e50;
     }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -130,13 +126,19 @@ const sortedAnime = computed(() => {
       .tag {
         background-color: #e1e1e1;
         color: #333;
-        padding: 2px 8px;
-        border-radius: 14px;
-        margin: 2px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin: 5px;
         font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #d1d1d1;
+        }
       }
     }
   }
+
   .similarity-score-container {
     position: relative;
     width: 100%;
@@ -145,58 +147,53 @@ const sortedAnime = computed(() => {
 
   .similarity-meter {
     width: 100%;
-    height: 30px; // Or whatever height you prefer
+    height: 25px;
     border: none;
-    border-radius: 2px;
-    background-color: #2980b9; // Or whatever background color you prefer
+    border-radius: 4px;
+    background-color: #d1d1d1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
     &::-moz-progress-bar {
-      background-color: #3498db; // Desired color for the progress
+      background-color: #3498db;
     }
 
-    // For Chrome, Safari, and Opera
     &::-webkit-progress-bar {
-      background-color: #e1e1e1; // Background color for the bar when it's empty
+      background-color: #e1e1e1;
     }
 
     &::-webkit-progress-value {
-      background-color: #3498db; // Desired color for the progress
+      background-color: #3498db;
     }
   }
 
   .percentage-label {
     position: absolute;
-    top: 50%; // Center it vertically
-    transform: translateY(-50%); // Ensure it's perfectly centered
-    left: 10px; // Add some space from the left side
-    width: auto; // Adjust width automatically based on content size
-    text-align: left; // Align text to the left side
-    line-height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    text-align: left;
+    line-height: 25px;
   }
 
-  // Tablet layout
   @media (min-width: 768px) {
     .anime-card {
-      margin: 20px;
+      margin: 15px;
     }
   }
 
-  // Laptop layout with 2 columns
   @media (min-width: 1024px) {
     .anime-card {
-      width: calc(50% - 20px); // Shorten distance between two columns
+      width: calc(50% - 20px);
       margin: 10px;
     }
   }
 
-  // Desktop layout with 3 columns
   @media (min-width: 1200px) {
     .anime-card {
-      width: calc(22% - 5px);
-      margin: 15px;
+      width: calc(33.33% - 20px);
+      margin: 10px;
     }
   }
 }
