@@ -94,7 +94,7 @@ const closeSuggestions = () => {
 
 const getRecommendations = async () => {
   const inputArray = animeInput.value.split(",");
-  const response = await fetch("https://127.0.0.1:3000/recommend", {
+  const response = await fetch("https://127.0.0.1:3000/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user_history: inputArray }),
