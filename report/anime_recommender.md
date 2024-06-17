@@ -18,7 +18,7 @@
             #### some market insight on the anime monetary status [2]
             ![Market insight](market_insight.png)
         - ### Data Understanding
-            I gathered all the necessary data from the website [myAnimeList](https://myanimelist.net/) by ( long time ago ) creating a script that fetches the data from their builtin api.
+            I gathered all the necessary data from the website [myAnimeList](https://myanimelist.net/) by creating a script that fetches the data from their builtin api.
             Understanding the data was crucial for building a solid recommender system.
             This data includes things like:
             - User ratings on anime
