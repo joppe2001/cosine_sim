@@ -94,7 +94,7 @@ const closeSuggestions = () => {
 
 const getRecommendations = async () => {
   const inputArray = animeInput.value.split(",");
-  const response = await fetch("https://127.0.0.1:3000/recommend", {
+  const response = await fetch("https://127.0.0.1:3000/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user_history: inputArray }),
@@ -112,8 +112,17 @@ const getRecommendations = async () => {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(99, 98, 98);
   border-radius: 8px;
+  background-color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+
+  &:hover {
+    box-shadow: -4px 4px 0 rgb(16,22,47);
+    transform: translateY(-2px) translateX(2px);
+
+  }
 
   h2 {
     color: #2c3e50;

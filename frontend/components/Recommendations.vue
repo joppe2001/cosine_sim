@@ -65,7 +65,7 @@ const sortedAnime = computed(() => {
 
   .anime-card {
     background: #ffffff;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #6d6d6d;
     border-radius: 5px;
     padding: 20px;
     margin: 10px;

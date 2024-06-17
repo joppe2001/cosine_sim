@@ -39,6 +39,7 @@ mkcert -install # windows
 After the training is complete, start the server by running the following command:
 
 ```bash
+mkcert localhost # ( or mkcert -install for windows )
 python -m server.app
 ```
 
