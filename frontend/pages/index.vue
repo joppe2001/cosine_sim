@@ -6,7 +6,6 @@
 </template>
 
 <script setup>
-
 const recommendations = ref([]);
 
 function updateRecommendations(newRecommendations) {
@@ -16,7 +15,7 @@ function updateRecommendations(newRecommendations) {
 
 <style>
 body {
-  background-color: #FFF0E5;
+  background-color: #fff0e5;
   height: 100vh;
 }
 </style>

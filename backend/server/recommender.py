@@ -1,3 +1,5 @@
+import pandas as pd
+
 def recommend_anime(df, cosine_sim, user_history, N=20):
     """Generates anime recommendations based on user history."""
     user_anime_indices = _get_user_anime_indices(df, user_history)
@@ -5,8 +7,7 @@ def recommend_anime(df, cosine_sim, user_history, N=20):
     recommended_anime = _exclude_user_history(recommended_anime, user_history)
     return recommended_anime.head(N)  # Return only top N recommendations
 
-def _get_user_anime_indices(df, user_history):
-    """Finds indices in the DataFrame corresponding to the user's anime history."""
+def _get_user_anime_indices(df: pd.DataFrame, user_history: list):
     indices = []
     for title in user_history:
         matching_anime = df[
