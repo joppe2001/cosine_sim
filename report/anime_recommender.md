@@ -53,7 +53,7 @@
 As evaluation, since this model is not a model where I can apply train and test data as it is all predefined in a matrix. So instead i used other websites like [anibrain](https://anibrain.ai/recommender/anime) and [ameo](https://anime.ameo.dev/), besides using existing recommenders I also ran the project by some large groups of anime watchers on Discord and some of my aquintances who are Anime fanatics. The results were mostly good, although some of the critics were that some shows did not quite fit in the theme of the anime and some of the shows were not very good.
 
 ### Extra's
-Since I already have a slight background in software development, I thought it would be interesting to mix this project with a front-end UI so that the end-user can actually try out the model. And in the process of making this I decided to use `FLASK-CORS` for the backend to host the model.
+Since I already have a slight background in software development, I thought it would be interesting to mix this project with a front-end UI so that the end-user can actually try out the model. And in the process of making this I decided to use `FLASK-CORS` for the backend to host the model. Also I got recommended by a machine learning expert to use ENUM's instead of basic strings and weights everywhere to prevent errors upon editing.
 
 
 ### Conclusion & recommendations
