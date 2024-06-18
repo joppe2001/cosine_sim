@@ -8,24 +8,53 @@
         class="anime-card"
       >
         <h3 class="anime-title">
-          <a :href="anime.url">{{ anime?.name ? anime.name : "Name not available" }}</a>
+          <a :href="anime.url">{{
+            anime?.name ? anime.name : "Name not available"
+          }}</a>
         </h3>
-        <div class="match" :class="{ 'bad-match': anime.similarity_percentage < 60, 'good-match': anime.similarity_percentage >= 60 }">
-          {{ anime.similarity_percentage < 60 ? 'Bad match' : 'Good match' }}
+        <div
+          class="match"
+          :class="{
+            'bad-match': anime.similarity_percentage < 60,
+            'good-match': anime.similarity_percentage >= 60,
+          }"
+        >
+          {{ anime.similarity_percentage < 60 ? "Bad match" : "Good match" }}
         </div>
-        <div class="similarity-score-container">
-          <progress class="similarity-meter" :value="anime.similarity_percentage" max="100"></progress>
-          <div class="percentage-label">{{ anime.similarity_percentage.toFixed(2) }}% similar to your input</div>
+        <div
+          class="similarity-score-container"
+          style="background-color: rgb(225, 225, 225)"
+        >
+          <div
+            class="similarity-meter"
+            :style="{
+              width: anime.similarity_percentage + '%',
+              backgroundColor: 'rgb(40,128,185',
+              borderRadius: '50px',
+            }"
+          ></div>
+          <div class="percentage-label" style="color: white; font-size: 16px">
+            {{ anime.similarity_percentage.toFixed(2) }}% similarity
+          </div>
         </div>
         <p><strong>Score:</strong> {{ anime.score }}</p>
         <div v-if="anime.genres" class="tags">
-          <span class="tag" v-for="genre in anime.genres" :key="genre">{{ genre }}</span>
+          <span class="tag" v-for="genre in anime.genres" :key="genre">{{
+            genre
+          }}</span>
         </div>
         <p v-if="anime.aired"><strong>Aired:</strong> {{ anime.aired }}</p>
-        <p v-if="anime.producer"><strong>Producer:</strong> {{ anime.producer }}</p>
-        <p v-if="anime.studios"><strong>Studios:</strong> {{ anime.studios.join(", ") }}</p>
+        <p v-if="anime.producer">
+          <strong>Producer:</strong> {{ anime.producer }}
+        </p>
+        <p v-if="anime.studios">
+          <strong>Studios:</strong> {{ anime.studios.join(", ") }}
+        </p>
         <div class="tags">
-          <p><strong>Rank:</strong> <span v-for="rank in anime.allRank[0]" :key="rank">{{ rank }}</span></p>
+          <p>
+            <strong>Rank: </strong>
+            <span v-for="rank in anime.allRank[0]" :key="rank">{{ rank }}</span>
+          </p>
         </div>
       </div>
     </div>
@@ -69,15 +98,18 @@ const sortedAnime = computed(() => {
     border-radius: 5px;
     padding: 20px;
     margin: 10px;
-    width: 100%; 
+    width: 100%;
     // box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
     box-sizing: border-box;
 
     &:hover {
       transform: translateY(-4px) translateX(4px);
-      box-shadow: -8px 8px 0 rgb(16,22,47);
+      box-shadow: -8px 8px 0 rgb(16, 22, 47);
     }
+
 
     .anime-title {
       margin-top: 0;
@@ -143,13 +175,13 @@ const sortedAnime = computed(() => {
     position: relative;
     width: 100%;
     color: #333;
+    border-radius: 50px;
   }
 
   .similarity-meter {
     width: 100%;
     height: 25px;
     border: none;
-    border-radius: 4px;
     background-color: #d1d1d1;
     display: flex;
     justify-content: flex-start;

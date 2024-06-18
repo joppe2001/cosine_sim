@@ -16,9 +16,12 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.16.8",
+    "@react-three/uikit": "^0.3.6",
     "esbuild": "^0.19.5",
     "flask": "^0.2.10",
     "papaparse": "^5.4.1",
-    "sass": "^1.69.3"
+    "sass": "^1.69.3",
+    "three": "^0.165.0"
   }
 }
