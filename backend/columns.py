@@ -4,7 +4,7 @@ class ColumnNames(Enum):
     GENRES = "genres"
     THEMES = "themes"
     STUDIOS = "studios"
-    ALL_RANK = "allRank"
+    ALLRANK = "allRank"
     RATING = "rating"
     FAVORITES = "favorites"
     SCORE = "score"

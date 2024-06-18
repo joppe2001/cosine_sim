@@ -103,7 +103,7 @@ if __name__ == "__main__":
     base_path = os.path.dirname(os.path.abspath(__file__))
     filename = os.path.join(base_path, "../data/anime_list.csv")  # Change this to your dataset path
     feature_columns = ["genres", "themes", "studios", "allRank", "rating", "favorites"]  # Change these columns as needed
-    column_weights = {"themes": 1.5, "genres": 1.5, "allRank": 1.2, "favorites": 1.2}  # Adjust weights as needed
+    column_weights = {"themes": Weights.themes.value, "genres": Weights.genres.value, "allRank": Weights.allRank.value, "favorites": Weights.favorites.value, "rating": Weights.rating.value} 
     main(filename, feature_columns, column_weights)
 ```
 
