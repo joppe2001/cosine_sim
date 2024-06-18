@@ -1,20 +1,19 @@
 import pandas as pd
 import seaborn as sns  # type: ignore
 import os
-
 import matplotlib.pyplot as plt
 
 base_path = os.path.dirname(os.path.abspath(__file__))
 filename = os.path.join(base_path, "../models/model1/dataframe.pkl")
-
+# filename = os.path.join(base_path, "../cleaned_datasets/clean_set.csv")
+# df = pd.read_csv(filename)
 df = pd.read_pickle(filename)
 
 df["allRank"] = df["allRank"].astype(str).str.extract(r"(\d+)").astype(float)
-
 df["duration"] = pd.to_numeric(df["duration"], errors="coerce")
 df["score"] = pd.to_numeric(df["score"], errors="coerce")
-
-df = df.dropna(subset=["duration", "score", "allRank"])
+df["scoredByUser"] = pd.to_numeric(df["scoredByUser"], errors="coerce")
+df = df.dropna(subset=["duration", "score", "allRank", "scoredByUser"])
 
 def plot_correlation_heatmap(df):
     """
@@ -27,10 +26,11 @@ def plot_correlation_heatmap(df):
         None
     """
     plt.figure(figsize=(12, 8))
-    corr_matrix = df[["score", "duration", "allRank"]].corr()
+    corr_matrix = df[["duration", "score", "allRank", "scoredByUser"]].corr()
     sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", vmin=-1, vmax=1)
     plt.title("Correlation Heatmap")
     plt.show()
+
 
 
 def plot_scatter(df, x, y, hue=None):
