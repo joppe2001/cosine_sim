@@ -52,7 +52,7 @@ df = load_from_local("models/model1/dataframe.pkl")
 cosine_sim = load_from_local("models/model1/cosine_similarity_matrix.pkl")
 ```
 
-Now, navigate to the `frontend` directory by executing the following command:
+Now, navigate to the `frontend` directory by executing the following command: ( make sure node 20 is installed )
 ```bash
 cd ../frontend
 ```
