@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from preprocessing.clean import load_data, preprocess_data  # type: ignore
+from weights import Weights  # type: ignore
 
 
 def get_next_model_directory(base_dir="models"):
@@ -24,7 +25,7 @@ def get_next_model_directory(base_dir="models"):
 def main(filename, feature_columns, column_weights=None):
     df = load_data(filename)
 
-    df, features_matrix, _ = preprocess_data(df, feature_columns, column_weights)
+    df, features_matrix, _ = preprocess_data(df, feature_columns, column_weights) # using an underscore since we dont really care about the 3d argument here.
 
     # Compute the cosine similarity matrix
     cosine_sim = cosine_similarity(features_matrix).astype(np.float16)
@@ -55,6 +56,6 @@ if __name__ == "__main__":
         "rating",
         "favorites"
     ]  # Change these columns as needed
-    column_weights = {"themes": 1.5, "genres": 1.5, "allRank": 1.3, "favorites": 1.2, "rating": 1.4}  # Adjust weights as needed
+    column_weights = {"themes": Weights.themes.value, "genres": Weights.genres.value, "allRank": Weights.allRank.value, "favorites": Weights.favorites.value, "rating": Weights.rating.value}  # Adjust weights as needed
 
     main(filename, feature_columns, column_weights)
