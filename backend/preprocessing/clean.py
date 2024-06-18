@@ -1,4 +1,3 @@
-# preprocessing.py
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, MultiLabelBinarizer  # type: ignore

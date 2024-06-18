@@ -13,3 +13,4 @@ class ColumnNames(Enum):
     URL = "url"
     SYNONYMSNAME = "synonymsName"
     PRODUCER = "producer"
+    SCOREDBYUSER = "scoredByUser"
