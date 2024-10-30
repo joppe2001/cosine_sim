@@ -32,11 +32,8 @@ mkcert -install # windows
 After the training is complete, start the server by running the following command:
 
 ```bash
-mkcert localhost # ( or mkcert -install for windows )
 python -m server.app
 ```
-
-Then navigate to the /recommend route from the backend server.
 
 Make sure to change the model version in `app.py` if you haven't already. Locate the following lines of code for data loading:
 
@@ -52,10 +49,10 @@ cd ../frontend
 
 Run the installer for the packages ( choose one )
 ```bash
-bun install
+bun i
 yarn
-npm install
-pnpm install
+npm i
+pnpm i
 ```
 
 Finally, start the development server using your preferred package manager. For example, if you are using `bun`, run the following command:
