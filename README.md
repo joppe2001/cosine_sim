@@ -4,6 +4,13 @@ To execute the following steps, open your terminal and navigate to the `backend`
 cd backend
 ```
 
+Be sure to install a venv or conda or some other form of environment to your liking
+
+```bash
+python -m venv myenv
+source myenv/bin/activate
+```
+
 Next, install the required dependencies by running the following command:
 
 ```bash
@@ -12,20 +19,6 @@ pip install -r requirements.txt
 
 Once the dependencies are installed, start the training process by executing the following command:
 
-```bash
-python -m training.train
-```
-
-To execute the following steps, open your terminal and navigate to the `backend` directory:
-
-```bash
-cd backend
-```
-Next, install the required dependencies by running the following command:
-```bash
-pip install -r requirements.txt
-```
-Once the dependencies are installed, start the training process by executing the following command:
 ```bash
 python -m training.train
 ```
