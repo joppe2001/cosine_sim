@@ -62,3 +62,5 @@ yarn dev
 npm run dev
 pnpm run dev
 ```
+
+And ofcourse, after you have done the training once, unless you change the weights or features you wont have to train again. So just run the server and then the frontent and it should all work fine
