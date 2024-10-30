@@ -30,7 +30,7 @@ mkcert -install # windows
 ```
 
 After the training is complete, start the server by running the following command:
-
+Make sure to actually open that server on ur browser to activate the api endpoint
 ```bash
 python -m server.app
 ```
